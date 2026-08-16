@@ -1,6 +1,6 @@
 {
   "name": "luis-badalo-portfolio-grok",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Luís Badalo — Middleware Consultant & MuleSoft Developer personal site (Grok)",
   "main": "server.js",
   "type": "commonjs",

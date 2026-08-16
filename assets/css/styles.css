@@ -47,7 +47,10 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header) + 0.75rem);
+}
+
+:where([id]):not(#top) {
+  scroll-margin-top: calc(var(--header) + 0.75rem);
 }
 
 body {
