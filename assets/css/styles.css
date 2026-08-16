@@ -49,13 +49,8 @@ html {
   scroll-behavior: smooth;
 }
 
-:where([id]):not(#top) {
+:where([id]) {
   scroll-margin-top: calc(var(--header) + 0.75rem);
-}
-
-#top {
-  position: absolute;
-  top: 0;
 }
 
 body {
