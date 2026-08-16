@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Luís Badalo">
+  <rect width="32" height="32" rx="6" fill="#16120e"/>
+  <circle cx="9" cy="16" r="3.2" fill="none" stroke="#f3eee4" stroke-width="1.8"/>
+  <circle cx="23" cy="16" r="3.2" fill="#b8431f"/>
+  <path d="M12.4 16h7.2" stroke="#f3eee4" stroke-width="1.8"/>
+</svg>

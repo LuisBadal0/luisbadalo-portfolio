@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>404 — Page not found · Luís Badalo</title>
+  <style>
+    :root {
+      --paper: #f3eee4;
+      --ink: #16120e;
+      --ink-soft: #6b6259;
+      --accent: #b8431f;
+    }
+    * { margin: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Sora", system-ui, sans-serif;
+      padding: 2rem;
+    }
+    main { text-align: center; max-width: 40rem; }
+    .code {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      color: var(--accent);
+      font-size: 4rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+    }
+    h1 { font-weight: 500; font-size: 1.7rem; margin: .8rem 0 1rem; }
+    p { color: var(--ink-soft); line-height: 1.6; }
+    a {
+      display: inline-block;
+      margin-top: 1.6rem;
+      padding: .75rem 1.4rem;
+      border: 1.5px solid var(--ink);
+      border-radius: 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background .18s ease, color .18s ease;
+    }
+    a:hover { background: var(--ink); color: var(--paper); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="code">404</p>
+    <h1>This route doesn't exist.</h1>
+    <p>The systems are all talking — just not to this address. The only endpoint that answers is the front page.</p>
+    <a href="/">← back to luisbadalo.dev</a>
+  </main>
+</body>
+</html>

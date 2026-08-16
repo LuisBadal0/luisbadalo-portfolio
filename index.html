@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    document.documentElement.classList.add("js");
+    try {
+      var t = localStorage.getItem("theme");
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    } catch (e) { document.documentElement.dataset.theme = "light"; }
+  </script>
+  <title>Luís Badalo — Middleware Consultant &amp; MuleSoft Developer</title>
+  <meta name="description" content="Luís Badalo is a middleware consultant and Salesforce Certified MuleSoft Developer I in Portugal. He designs, builds, and runs APIs and integrations — currently on a banking project for Banco CTT with Glintt Global.">
+  <meta name="author" content="Luís Badalo">
+  <meta name="theme-color" content="#f3eee4">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://luisbadalo.dev/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Luís Badalo — Middleware Consultant &amp; MuleSoft Developer">
+  <meta property="og:description" content="APIs, integrations, and CI/CD. Certified MuleSoft Developer currently working on banking systems at Banco CTT.">
+  <meta property="og:url" content="https://luisbadalo.dev/">
+  <meta property="og:image" content="https://luisbadalo.dev/assets/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Luís Badalo — Middleware Consultant and MuleSoft Developer, based in Portugal.">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Luís Badalo">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luís Badalo — Middleware Consultant">
+  <meta name="twitter:description" content="Certified MuleSoft Developer. I make enterprise systems talk to each other.">
+  <meta name="twitter:image" content="https://luisbadalo.dev/assets/img/og-card.png">
+  <meta name="twitter:image:alt" content="Luís Badalo — Middleware Consultant and MuleSoft Developer, based in Portugal.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Sora:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Luís Badalo",
+    "jobTitle": "Middleware Consultant",
+    "description": "Middleware consultant and Salesforce Certified MuleSoft Developer I, focused on API development, system integration, and CI/CD.",
+    "email": "mailto:luismbbadalo@gmail.com",
+    "nationality": "Portuguese",
+    "address": { "@type": "PostalAddress", "addressCountry": "PT" },
+    "sameAs": [
+      "https://www.linkedin.com/in/luis-badalo/",
+      "https://github.com/LuisBadal0/",
+      "https://www.salesforce.com/trailblazer/jsw9u21smkwrt6upxx"
+    ],
+    "knowsAbout": ["MuleSoft", "API development", "System integration", "Azure DevOps", "CI/CD", "SQL Server"],
+    "worksFor": { "@type": "Organization", "name": "Glintt Global" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Instituto Politécnico de Tomar" }
+  }
+  </script>
+</head>
+<body>
+  <!--
+    Luís Badalo — personal site.
+    Source of truth: the CV. Nothing here was invented to look busier.
+  -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="flow-rail" aria-hidden="true">
+    <div class="flow-rail__track"></div>
+    <div class="flow-rail__msg" id="flow-msg"></div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a class="brand" href="#top" aria-label="Luís Badalo, back to top">
+        <span class="brand__mark" aria-hidden="true">
+          <i></i><i></i>
+        </span>
+        <span class="brand__name">Luís Badalo</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+          <span class="sr-only">Menu</span>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+        <ul class="nav__list" id="nav-menu">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+
+      <a class="header-cta" href="mailto:luismbbadalo@gmail.com">Email</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-name">
+      <p class="hero__meta">
+        <span class="pulse" aria-hidden="true"></span>
+        Lisbon · Middleware · MuleSoft
+      </p>
+
+      <h1 id="hero-name" class="hero__name">
+        <span>Luís</span>
+        <span class="hero__rule" aria-hidden="true"><i></i></span>
+        <span>Badalo</span>
+      </h1>
+
+      <p class="hero__lede">
+        I make enterprise systems talk to each other.
+        <em> Middleware consultant and certified MuleSoft developer — currently shipping APIs for banking processes at Banco CTT.</em>
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="#work">See selected work</a>
+        <a class="btn btn--ghost" href="mailto:luismbbadalo@gmail.com">Start a conversation</a>
+        <a class="btn btn--ghost" href="cv/luis_badalo_cv_EN.pdf" download>Download CV</a>
+      </div>
+
+      <dl class="hero__facts">
+        <div>
+          <dt>Now</dt>
+          <dd>Middleware Consultant, Glintt Global</dd>
+        </div>
+        <div>
+          <dt>Client</dt>
+          <dd>Banco CTT</dd>
+        </div>
+        <div>
+          <dt>Certified</dt>
+          <dd>Salesforce MuleSoft Developer I</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="section__head">
+        <p class="eyebrow">01 — Selected work</p>
+        <h2 id="work-title">Systems that had to agree.</h2>
+        <p class="section__intro">Named programmes from the CV — retail operations at scale, then banking integrations. No case-study theatre, just the work.</p>
+      </div>
+
+      <article class="case case--featured reveal">
+        <div class="case__index">01</div>
+        <div class="case__body">
+          <p class="case__kicker">Glintt Global · Lisbon · Feb 2025 — Present</p>
+          <h3>Banking APIs for Banco CTT</h3>
+          <p>End-to-end MuleSoft work for a Portuguese bank: design the contract, implement the flow, then keep it alive in production.</p>
+          <ul>
+            <li>API design in RAML via Design Center</li>
+            <li>Implementation in Anypoint Studio</li>
+            <li>Governance through API Manager and Runtime Manager</li>
+            <li>SQL Server procedures and functions behind the integrations</li>
+            <li>CI/CD on Azure DevOps, delivered in Agile teams</li>
+          </ul>
+        </div>
+        <aside class="case__aside">
+          <p class="case__tag">Integration</p>
+          <p class="case__tag">MuleSoft</p>
+          <p class="case__tag">Banking</p>
+          <p class="case__note">Current focus. The whole Anypoint lifecycle, not just the happy-path demo.</p>
+        </aside>
+      </article>
+
+      <div class="case-grid">
+        <article class="case reveal">
+          <div class="case__index">02</div>
+          <p class="case__kicker">Softinsa · IKEA spaces · 2020 — 2022</p>
+          <h3>Kiddyland</h3>
+          <p>Check-in and check-out for children in IKEA spaces across countries. Backend, cloud, and the pipelines that made new environments boring — in a good way.</p>
+          <ul>
+            <li>Backend services and multi-environment CI/CD on Azure DevOps</li>
+            <li>Pre-production on Azure App Services, Storage, Logic Apps, Function Apps</li>
+            <li>SQL Server for application data; TLS certificates in Azure</li>
+            <li>Jira, Black Duck, and Polaris in the delivery path</li>
+          </ul>
+        </article>
+
+        <article class="case reveal">
+          <div class="case__index">03</div>
+          <p class="case__kicker">Softinsa · IKEA stores · 2020 — 2022</p>
+          <h3>MobileAuditing</h3>
+          <p>A store-audit companion used across IKEA countries. Same discipline as Kiddyland, different data shape: stores, audits, documents.</p>
+          <ul>
+            <li>Backend development and Azure DevOps pipelines</li>
+            <li>Pre-production environments and deployment support</li>
+            <li>Azure App Services and Storage Accounts</li>
+            <li>MongoDB for stores, audits, and documentation</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience" aria-labelledby="exp-title">
+      <div class="section__head section__head--light">
+        <p class="eyebrow">02 — Experience</p>
+        <h2 id="exp-title">A short flow, two processors.</h2>
+        <p class="section__intro">Reverse chronological, the way a recruiter actually scans it. Titles and employers as written.</p>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item reveal">
+          <div class="timeline__node" aria-hidden="true"></div>
+          <div class="timeline__when">
+            <time datetime="2025-02">Feb 2025</time>
+            <span>Present</span>
+            <span>Lisbon</span>
+          </div>
+          <div class="timeline__card">
+            <h3>Middleware Consultant</h3>
+            <p class="timeline__org">Glintt Global · assignment at Banco CTT</p>
+            <p>MuleSoft-based integration and API development for banking and business processes. Comfortable across the full lifecycle: RAML, Anypoint Studio, API Manager, Runtime Manager. SQL Server when the payload has to land somewhere durable. Azure DevOps for the path to runtime. Agile, with both engineering and business in the room.</p>
+          </div>
+        </li>
+        <li class="timeline__item reveal">
+          <div class="timeline__node" aria-hidden="true"></div>
+          <div class="timeline__when">
+            <time datetime="2020-11">Nov 2020</time>
+            <span>Sep 2022</span>
+            <span>Tomar</span>
+          </div>
+          <div class="timeline__card">
+            <h3>Full Stack Developer</h3>
+            <p class="timeline__org">Softinsa</p>
+            <p>Two production programmes — Kiddyland and MobileAuditing — spanning backend development, Azure infrastructure, and CI/CD. App Services, Storage, Logic Apps, Function Apps, SQL and MongoDB, TLS, plus the unglamorous glue of Jira and security scanning.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="section__head">
+        <p class="eyebrow">03 — Skills</p>
+        <h2 id="skills-title">Tools I actually use.</h2>
+        <p class="section__intro">Grouped the way the work groups them. No percentage bars. Certification sits with the platform it belongs to.</p>
+      </div>
+
+      <div class="skill-board">
+        <article class="skill-group reveal">
+          <h3>Integration</h3>
+          <ul>
+            <li>
+              <span>MuleSoft Anypoint Platform</span>
+              <small>Design Center, Studio, API Manager, Runtime Manager</small>
+            </li>
+            <li>
+              <span>RAML</span>
+              <small>Contract-first API design</small>
+            </li>
+            <li>
+              <span>Salesforce Certified MuleSoft Developer I</span>
+              <small>Issued April 2025</small>
+            </li>
+          </ul>
+        </article>
+
+        <article class="skill-group reveal">
+          <h3>Cloud &amp; delivery</h3>
+          <ul>
+            <li><span>Azure DevOps</span><small>CI/CD, multi-environment releases</small></li>
+            <li><span>Microsoft Azure</span><small>App Services, Storage, Logic Apps, Function Apps</small></li>
+            <li><span>Docker · Kubernetes · Terraform</span><small>From formal DevOps training, 2023</small></li>
+            <li><span>Jenkins · Ansible</span><small>Listed among delivery tools</small></li>
+          </ul>
+        </article>
+
+        <article class="skill-group reveal">
+          <h3>Backend</h3>
+          <ul>
+            <li><span>SQL Server</span><small>Stored procedures and functions</small></li>
+            <li><span>MongoDB</span><small>Document stores for operational data</small></li>
+            <li><span>.NET Core</span><small>Backend delivery</small></li>
+            <li><span>Java</span><small>Backend delivery</small></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="about__grid">
+        <div class="section__head">
+          <p class="eyebrow">04 — About</p>
+          <h2 id="about-title">A connector by trade.</h2>
+        </div>
+        <div class="about__copy reveal">
+          <p>I’m a Portuguese middleware consultant. The job, stripped of jargon: take systems that were never introduced and give them a reliable way to speak — contracts, mappings, runtime, the unglamorous bits that keep a bank’s processes moving on a Tuesday.</p>
+          <p>I trained in computer engineering at the Instituto Politécnico de Tomar, then spent two years at Softinsa building Azure-backed services for international IKEA programmes. The through-line was already there: backends, environments, pipelines, certificates. The current chapter is MuleSoft, in Lisbon with Glintt Global, inside Banco CTT.</p>
+          <p>I care about the whole path — RAML to runtime, procedure to payload — because integrations fail in the seams, not in the slide deck.</p>
+        </div>
+        <div class="about__side reveal">
+          <img class="about__photo" src="assets/img/luis_badalo.png" alt="Portrait of Luís Badalo" width="250" height="250" loading="lazy">
+          <dl class="about__facts">
+          <div>
+            <dt>Based</dt>
+            <dd>Portugal · working in Lisbon</dd>
+          </div>
+          <div>
+            <dt>Languages</dt>
+            <dd>Portuguese (native)<br>English — C1 writing, B2 listening, reading &amp; speaking</dd>
+          </div>
+          <div>
+            <dt>Education</dt>
+            <dd>BSc Computer Engineering<br>Instituto Politécnico de Tomar, 2016–2021</dd>
+          </div>
+          <div>
+            <dt>Also studied</dt>
+<dd>First Certificate in English — Grade C (170), 2016<br>Azure Fundamentals prep · DevOps (Docker, Kubernetes, Terraform, Azure DevOps)</dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section credentials" id="credentials" aria-labelledby="cred-title">
+      <div class="section__head">
+        <p class="eyebrow">05 — Proof</p>
+        <h2 id="cred-title">On the record.</h2>
+      </div>
+      <div class="cred-row">
+        <a class="cred reveal" href="https://www.salesforce.com/trailblazer/jsw9u21smkwrt6upxx" target="_blank" rel="noopener noreferrer">
+          <span class="cred__kind">Certification</span>
+          <strong>Salesforce Certified MuleSoft Developer I</strong>
+          <span>15 April 2025 · Verify on Trailblazer</span>
+        </a>
+        <a class="cred reveal" href="https://www.udemy.com/certificate/UC-5c0d4a4c-00cc-4ab7-9518-efd01f799740/" target="_blank" rel="noopener noreferrer">
+          <span class="cred__kind">Course</span>
+          <strong>AZ-900 Azure Fundamentals exam prep</strong>
+          <span>Udemy · October 2021</span>
+        </a>
+        <a class="cred reveal" href="https://www.udemy.com/certificate/UC-e15a864d-11e9-41b2-bfdb-e93f7c84e96b/" target="_blank" rel="noopener noreferrer">
+          <span class="cred__kind">Course</span>
+          <strong>Docker, Kubernetes, Terraform &amp; Azure DevOps</strong>
+          <span>Udemy · October 2023</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="section__head section__head--light">
+        <p class="eyebrow">06 — Contact</p>
+        <h2 id="contact-title">If your systems need a diplomat.</h2>
+        <p class="section__intro">Recruiters, engineering leads, former colleagues — the inbox is the shortest route.</p>
+      </div>
+
+      <a class="contact-mail" href="mailto:luismbbadalo@gmail.com">luismbbadalo@gmail.com</a>
+
+      <ul class="contact-links">
+        <li><a href="https://www.linkedin.com/in/luis-badalo/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/LuisBadal0/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.salesforce.com/trailblazer/jsw9u21smkwrt6upxx" target="_blank" rel="noopener noreferrer">Trailblazer</a></li>
+      </ul>
+
+      <div class="console" id="whoami">
+        <div class="console__bar">
+          <span>GET /whoami</span>
+          <button type="button" class="console__run" id="run-whoami">Send</button>
+        </div>
+        <pre class="console__out" id="whoami-out">// Press Send, or type <kbd>whoami</kbd> anywhere on the page.</pre>
+        <p class="sr-only" id="whoami-live" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Luís Badalo. Portugal.</p>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <div class="egg" id="egg" hidden>
+    <p>Five clicks on the mark. You found the other endpoint.</p>
+  </div>
+
+  <script src="assets/js/script.js" onerror="document.documentElement.classList.remove('js')"></script>
+</body>
+</html>
