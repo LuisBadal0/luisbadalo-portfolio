@@ -9,11 +9,14 @@
       var t = localStorage.getItem("theme");
       if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       document.documentElement.dataset.theme = t;
-      var l = localStorage.getItem("lang");
+var l = localStorage.getItem("lang");
       if (!l) l = (navigator.language || "en").slice(0, 2).toLowerCase() === "pt" ? "pt" : "en";
       document.documentElement.dataset.lang = l;
       document.documentElement.lang = l === "pt" ? "pt-PT" : "en";
     } catch (e) { document.documentElement.dataset.theme = "light"; document.documentElement.dataset.lang = "en"; document.documentElement.lang = "en"; }
+    document.addEventListener("error", function (e) {
+      if (e.target && e.target.tagName === "SCRIPT") document.documentElement.classList.remove("js");
+    }, true);
   </script>
   <title data-i18n="meta.title">Luís Badalo — Middleware Consultant &amp; MuleSoft Developer</title>
   <meta name="description" content="Luís Badalo is a middleware consultant and Salesforce Certified MuleSoft Developer I in Portugal. He designs, builds, and runs APIs and integrations — currently on a banking project for Banco CTT with Glintt Global.">
@@ -388,7 +391,7 @@
     <p data-i18n="egg">Five clicks on the mark. You found the other endpoint.</p>
   </div>
 
-  <script src="assets/js/script.js?v=1.2.0" onerror="document.documentElement.classList.remove('js')"></script>
+<script src="assets/js/script.js?v=1.2.0"></script>
   <script src="assets/js/i18n.js?v=1.2.1"></script>
 </body>
 </html>
