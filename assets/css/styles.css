@@ -743,30 +743,85 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   max-width: 40rem;
 }
 
-.about__copy p:last-child { margin-bottom: 0; }
+.about__copy p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 3.1em;
+  line-height: 0.82;
+  padding: 0.1em 0.14em 0 0;
+  color: var(--terracotta);
+}
+
+.about__copy p:last-child {
+  margin-top: 1.75rem;
+  margin-bottom: 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  max-width: 34rem;
+  font-family: var(--serif);
+  font-size: clamp(1.12rem, 2vw, 1.32rem);
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--terracotta-ink);
+}
 
 .about__side {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-self: start;
 }
 
-.about__photo {
+.about__photo-frame {
+  position: relative;
   width: min(100%, 15rem);
+  margin: 0;
+}
+
+.about__photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(0.65rem, 0.65rem);
+  border: 1px solid var(--terracotta);
+  border-radius: var(--radius);
+  opacity: 0.4;
+}
+
+.about__photo {
+  position: relative;
+  width: 100%;
   height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background: var(--paper);
+  box-shadow: 0 14px 30px -22px rgba(22, 18, 14, 0.55);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.about__photo-frame:hover .about__photo {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 36px -24px rgba(22, 18, 14, 0.6);
 }
 
 .about__facts {
   display: grid;
-  gap: 1.2rem;
   margin: 0;
-  padding: 1.4rem;
-  background: var(--bg-2);
+  padding: 1.4rem 1.4rem 1.2rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
+}
+
+.about__facts > div {
+  padding: 0 0 1rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+.about__facts > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .about__facts dt {
@@ -774,10 +829,17 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
-.about__facts dd { margin: 0; font-weight: 500; }
+.about__facts dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.06rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
 
 @media (min-width: 880px) {
   .about__grid {
