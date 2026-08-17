@@ -10,6 +10,9 @@
       if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       document.documentElement.dataset.theme = t;
     } catch (e) { document.documentElement.dataset.theme = "light"; }
+    document.addEventListener("error", function (e) {
+      if (e.target && e.target.tagName === "SCRIPT") document.documentElement.classList.remove("js");
+    }, true);
   </script>
   <title>Luís Badalo — Middleware Consultant &amp; MuleSoft Developer</title>
   <meta name="description" content="Luís Badalo is a middleware consultant and Salesforce Certified MuleSoft Developer I in Portugal. He designs, builds, and runs APIs and integrations — currently on a banking project for Banco CTT with Glintt Global.">
@@ -382,6 +385,6 @@
     <p>Five clicks on the mark. You found the other endpoint.</p>
   </div>
 
-  <script src="assets/js/script.js?v=1.1.2" onerror="document.documentElement.classList.remove('js')"></script>
+  <script src="assets/js/script.js?v=1.1.2"></script>
 </body>
 </html>
