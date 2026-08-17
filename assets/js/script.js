@@ -107,17 +107,20 @@
     document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-in"));
   }
 
-  const payload = `{
+  const buildPayload = () => {
+    const s = (key, fallback) => (window.I18N ? window.I18N.s(key) : null) || fallback;
+    return `{
   "name": "Luís Badalo",
-  "role": "Middleware Consultant",
+  "role": "${s("whoami.role", "Middleware Consultant")}",
   "employer": "Glintt Global",
   "assignment": "Banco CTT",
   "certified": "Salesforce MuleSoft Developer I",
-  "based": "Portugal",
-  "languages": ["Portuguese", "English"],
+  "based": "${s("whoami.based", "Portugal")}",
+  "languages": ["${s("whoami.lang1", "Portuguese")}", "${s("whoami.lang2", "English")}"],
   "status": 200,
-  "message": "Ready to integrate."
+  "message": "${s("whoami.message", "Ready to integrate.")}"
 }`;
+  };
 
   let typed = "";
   let shown = false;
@@ -126,6 +129,7 @@
     if (!out || shown) return;
     shown = true;
     typed = "";
+    const payload = buildPayload();
     const announce = () => {
       if (live) live.textContent = payload;
     };
@@ -146,6 +150,14 @@
   };
 
   run?.addEventListener("click", showWhoami);
+
+  window.addEventListener("i18n:change", () => {
+    if (shown) {
+      const payload = buildPayload();
+      out.textContent = payload;
+      if (live) live.textContent = payload;
+    }
+  });
 
   window.addEventListener("keydown", (event) => {
     if (event.metaKey || event.ctrlKey || event.altKey) return;

@@ -299,6 +299,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
+/* Language toggle */
+.lang-toggle {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 /* Hero */
 .hero {
   position: relative;
