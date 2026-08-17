@@ -27,7 +27,7 @@ const MIME = {
 };
 
 const SECURITY_HEADERS = {
-    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'sha256-anfJQGF5iiDNCLm4qglH0N/aFpflRiBYW4Pj06CmM/g='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -115,6 +115,12 @@ function serve(req, res, filePath, status) {
 }
 
 const ALLOWED_EXTS = new Set(Object.keys(MIME));
+const PUBLIC_FILES = new Set(['index.html', '404.html', 'robots.txt', 'sitemap.xml']);
+const PUBLIC_DIRS = ['assets/', 'cv/'];
+
+function isPublic(filePath) {
+    return PUBLIC_FILES.has(filePath) || PUBLIC_DIRS.some((dir) => filePath.startsWith(dir));
+}
 
 const server = http.createServer((req, res) => {
     const method = req.method || 'GET';
@@ -144,14 +150,21 @@ const server = http.createServer((req, res) => {
 
     const filePath = pathname.slice(1);
     const ext = path.extname(filePath);
-    if (!ALLOWED_EXTS.has(ext) || filePath.includes('..')) {
-        res.writeHead(404);
-        res.end('Not found');
+    if (filePath.includes('..') || !isPublic(filePath) || !ALLOWED_EXTS.has(ext)) {
+        serve(req, res, '404.html', 404);
         return;
     }
 
     serve(req, res, filePath, 200);
 });
+
+const MAX_HEADERS_TIMEOUT_MS = 30_000;
+const MAX_REQUEST_TIMEOUT_MS = 60_000;
+const KEEP_ALIVE_TIMEOUT_MS = 5_000;
+
+server.headersTimeout = MAX_HEADERS_TIMEOUT_MS;
+server.requestTimeout = MAX_REQUEST_TIMEOUT_MS;
+server.keepAliveTimeout = KEEP_ALIVE_TIMEOUT_MS;
 
 server.listen(PORT, HOST, () => {
     console.log(`Portfolio (Grok) · serving http://${HOST}:${PORT}`);
