@@ -93,6 +93,26 @@
     link.addEventListener("click", closeNav);
   });
 
+  document.addEventListener("click", (event) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = link.getAttribute("href").slice(1);
+    event.preventDefault();
+    const behavior = reduced ? "auto" : "smooth";
+    if (id) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      target.scrollIntoView({ behavior, block: "start" });
+      target.tabIndex = -1;
+      target.focus({ preventScroll: true });
+    } else {
+      window.scrollTo({ top: 0, behavior });
+      const fallback = document.querySelector(".brand");
+      if (fallback) fallback.focus({ preventScroll: true });
+    }
+  });
+
   if (!reduced && "IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
