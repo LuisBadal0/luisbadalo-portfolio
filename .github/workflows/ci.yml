@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: package.json
+      - name: Syntax check
+        run: npm run check
+      - name: Verify CSP hash matches inline script
+        run: |
+          node -e "
+            const fs=require('fs'), crypto=require('crypto');
+            const html=fs.readFileSync('index.html','utf8');
+            const m=html.match(/<script>([\s\S]*?)<\/script>/);
+            if(!m){ console.error('inline script not found'); process.exit(1); }
+            const hash=crypto.createHash('sha256').update(m[1]).digest('base64');
+            const server=fs.readFileSync('server.js','utf8');
+            if(!server.includes(hash)){ console.error('CSP hash mismatch. Expected hash:', hash); process.exit(1); }
+            console.log('CSP hash ok:', hash);
+          "

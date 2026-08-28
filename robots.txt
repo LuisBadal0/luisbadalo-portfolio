@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://luisbadalo.dev/sitemap.xml
+Host: https://luisbadalo.dev
