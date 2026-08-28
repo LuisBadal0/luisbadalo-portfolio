@@ -1,0 +1,23 @@
+{
+  "name": "Luís Badalo — Middleware Consultant",
+  "short_name": "Luís Badalo",
+  "description": "Middleware consultant and MuleSoft Developer. APIs, integrations, CI/CD.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3eee4",
+  "theme_color": "#f3eee4",
+  "icons": [
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "lang": "en"
+}

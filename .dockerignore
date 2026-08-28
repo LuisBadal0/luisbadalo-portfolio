@@ -5,3 +5,13 @@ npm-debug.log*
 .DS_Store
 README.md
 *.md
+.github
+.vscode
+.idea
+coverage
+.opencode
+tmp
+*.log
+.env
+.env.*
+npm-debug.log*

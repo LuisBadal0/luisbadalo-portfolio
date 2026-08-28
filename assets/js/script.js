@@ -20,13 +20,25 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   const themeBtn = document.getElementById("theme-toggle");
-  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  const metaThemes = document.querySelectorAll('meta[name="theme-color"]');
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
   const applyTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
     themeBtn?.setAttribute("aria-pressed", String(theme === "dark"));
     themeBtn?.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-    metaTheme?.setAttribute("content", theme === "dark" ? "#16130f" : "#f3eee4");
+    const color = theme === "dark" ? "#16130f" : "#f3eee4";
+    if (metaThemes.length) {
+      metaThemes.forEach((m) => {
+        // If meta has a media query, keep it in sync when it matches the active theme
+        if (!m.media || m.media === "" || m.media.includes(theme)) {
+          m.setAttribute("content", color);
+        }
+      });
+      // Ensure at least one meta reflects the current theme (for browsers ignoring media).
+      if (![...metaThemes].some((m) => !m.media)) {
+        metaThemes[0].setAttribute("content", color);
+      }
+    }
   };
 
   themeBtn?.addEventListener("click", () => {
@@ -129,17 +141,21 @@
 
   const buildPayload = () => {
     const s = (key, fallback) => (window.I18N ? window.I18N.s(key) : null) || fallback;
-    return `{
-  "name": "Luís Badalo",
-  "role": "${s("whoami.role", "Middleware Consultant")}",
-  "employer": "Glintt Global",
-  "assignment": "Banco CTT",
-  "certified": "Salesforce MuleSoft Developer I",
-  "based": "${s("whoami.based", "Portugal")}",
-  "languages": ["${s("whoami.lang1", "Portuguese")}", "${s("whoami.lang2", "English")}"],
-  "status": 200,
-  "message": "${s("whoami.message", "Ready to integrate.")}"
-}`;
+    return JSON.stringify(
+      {
+        name: "Luís Badalo",
+        role: s("whoami.role", "Middleware Consultant"),
+        employer: "Glintt Global",
+        assignment: "Banco CTT",
+        certified: "Salesforce MuleSoft Developer I",
+        based: s("whoami.based", "Portugal"),
+        languages: [s("whoami.lang1", "Portuguese"), s("whoami.lang2", "English")],
+        status: 200,
+        message: s("whoami.message", "Ready to integrate.")
+      },
+      null,
+      2
+    );
   };
 
   let typed = "";

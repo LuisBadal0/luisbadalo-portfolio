@@ -1,8 +1,11 @@
 FROM node:22-alpine
+LABEL org.opencontainers.image.title="luisbadalo-portfolio" \
+      org.opencontainers.image.description="Static portfolio for Luís Badalo" \
+      org.opencontainers.image.source="https://github.com/LuisBadal0/luisbadalo-portfolio"
 
 WORKDIR /app
-COPY package.json ./
-RUN npm i --omit=dev --no-package-lock
+COPY package*.json ./
+RUN if [ -f package-lock.json ]; then npm ci --omit=dev; else npm i --omit=dev --no-package-lock; fi
 
 COPY . .
 

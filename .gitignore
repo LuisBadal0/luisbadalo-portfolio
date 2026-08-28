@@ -1,4 +1,17 @@
 node_modules/
 npm-debug.log*
+npm-debug.log*
 .env
+.env.*
 .DS_Store
+Thumbs.db
+coverage/
+.nyc_output/
+dist/
+tmp/
+.opencode/
+.vscode/
+.idea/
+*.log
+*.pid
+*.seed
