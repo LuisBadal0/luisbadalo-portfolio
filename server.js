@@ -88,8 +88,9 @@ function serve(req, res, filePath, status, reqUrl) {
         return;
     }
 
+    const ct = MIME[path.extname(filePath)] || (filePath === 'CNAME' ? 'text/plain; charset=utf-8' : 'application/octet-stream');
     const headers = {
-        'Content-Type': MIME[path.extname(filePath)] || 'application/octet-stream',
+        'Content-Type': ct,
         'Cache-Control': cacheControlFor(filePath, reqUrl),
         'Vary': 'Accept-Encoding',
         'ETag': info.etag,
@@ -184,8 +185,8 @@ function serve(req, res, filePath, status, reqUrl) {
 }
 
 const ALLOWED_EXTS = new Set(Object.keys(MIME));
-const PUBLIC_FILES = new Set(['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'site.webmanifest']);
-const PUBLIC_DIRS = ['assets/', 'cv/'];
+const PUBLIC_FILES = new Set(['index.html', '404.html', 'robots.txt', 'sitemap.xml', 'site.webmanifest', 'CNAME', 'humans.txt']);
+const PUBLIC_DIRS = ['assets/', 'cv/', '.well-known/'];
 
 function isPublic(filePath) {
     return PUBLIC_FILES.has(filePath) || PUBLIC_DIRS.some((dir) => filePath.startsWith(dir));
@@ -241,9 +242,11 @@ const server = http.createServer((req, res) => {
     const filePath = pathname.slice(1);
     const ext = path.extname(filePath);
     // Hard path-traversal check via resolved path, plus allowlist checks.
+    // CNAME has no extension but must be allowed — ALLOWED_EXTS check is skipped for it (empty ext).
     const resolved = path.resolve(ROOT, filePath);
     const insideRoot = resolved === ROOT || resolved.startsWith(ROOT + path.sep);
-    if (!insideRoot || filePath.includes('..') || !isPublic(filePath) || !ALLOWED_EXTS.has(ext)) {
+    const extAllowed = ext === '' ? PUBLIC_FILES.has(filePath) : ALLOWED_EXTS.has(ext);
+    if (!insideRoot || filePath.includes('..') || !isPublic(filePath) || !extAllowed) {
         serve(req, res, '404.html', 404, originalUrl);
         return;
     }

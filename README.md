@@ -14,7 +14,8 @@ Live: **https://luisbadalo.dev** · Mirror: https://luisbadal0.github.io/luisbad
 - "whoami" terminal easter egg — type `whoami` anywhere or hit Send in the contact console
 - Embedded schema.org `Person` structured data
 - Open Graph + Twitter card metadata, `hreflang` alternates, `color-scheme` support
-- Custom 404 page, `robots.txt`, `sitemap.xml`, `site.webmanifest`
+- Custom 404 page, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME`, `humans.txt`, `security.txt`
+- Preload for critical CSS and LCP image, `author` link
 - Optional zero-dependency Node server (`server.js`) with gzip (LRU), ETags + `If-Modified-Since`, conditional caching, path-traversal hardening, and security headers (CSP with hash, HSTS in production, COOP/CORP, graceful shutdown)
 
 ## Local development
@@ -59,6 +60,9 @@ cv/                         — downloadable résumé PDFs (EN + PT)
 robots.txt                  — allowlist + sitemap reference
 sitemap.xml                 — single canonical URL
 site.webmanifest            — PWA manifest
+CNAME                       — custom domain for GitHub Pages
+humans.txt                  — team & colophon
+.well-known/security.txt    — contact for security reports (RFC 9116)
 server.js                   — optional static server (hardened)
 Dockerfile                  — node:22-alpine, healthcheck on /health
 .github/workflows/ci.yml    — syntax check on push/PR
