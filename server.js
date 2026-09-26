@@ -103,7 +103,7 @@ function serve(req, res, filePath, status, reqUrl) {
     }
 
     const ifNoneMatch = req.headers['if-none-match'];
-    if (ifNoneMatch === info.etag || ifNoneMatch === '*') {
+    if (status === 200 && (ifNoneMatch === info.etag || ifNoneMatch === '*')) {
         // 304 must not include Content-Length or body
         res.writeHead(304, headers);
         res.end();
@@ -111,7 +111,7 @@ function serve(req, res, filePath, status, reqUrl) {
     }
 
     const ifModifiedSince = req.headers['if-modified-since'];
-    if (ifModifiedSince && !ifNoneMatch) {
+    if (status === 200 && ifModifiedSince && !ifNoneMatch) {
         const since = Date.parse(ifModifiedSince);
         const mtime = Date.parse(info.mtime);
         if (!Number.isNaN(since) && !Number.isNaN(mtime) && mtime <= since) {
@@ -139,7 +139,7 @@ function serve(req, res, filePath, status, reqUrl) {
     if (req.method === 'HEAD') {
         // For HEAD, still compute gzip length if client accepts it to keep Content-Length accurate.
         if (COMPRESSIBLE.has(ext) && data.length > 1400 && (req.headers['accept-encoding'] || '').includes('gzip')) {
-            const key = `${filePath}-${data.length}`;
+            const key = `${filePath}-${info.etag}`;
             let gz = gzipCache.get(key);
             if (!gz) {
                 gz = zlib.gzipSync(data);
@@ -162,7 +162,7 @@ function serve(req, res, filePath, status, reqUrl) {
     }
 
     if (COMPRESSIBLE.has(ext) && data.length > 1400 && (req.headers['accept-encoding'] || '').includes('gzip')) {
-        const key = `${filePath}-${data.length}`;
+        const key = `${filePath}-${info.etag}`;
         let gz = gzipCache.get(key);
         if (!gz) {
             gz = zlib.gzipSync(data);

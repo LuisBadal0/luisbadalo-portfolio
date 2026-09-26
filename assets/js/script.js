@@ -27,19 +27,10 @@
     themeBtn?.setAttribute("aria-pressed", String(theme === "dark"));
     themeBtn?.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
     const color = theme === "dark" ? "#16130f" : "#f3eee4";
-    if (metaThemes.length) {
-      metaThemes.forEach((m) => {
-        // If meta has a media query, keep it in sync when it matches the active theme
-        if (!m.media || m.media === "" || m.media.includes(theme)) {
-          m.setAttribute("content", color);
-        }
-      });
-      // Ensure at least one meta reflects the current theme (for browsers ignoring media).
-      if (![...metaThemes].some((m) => !m.media)) {
-        metaThemes[0].setAttribute("content", color);
-      }
-    }
+    metaThemes.forEach((meta) => meta.setAttribute("content", color));
   };
+
+  applyTheme(document.documentElement.dataset.theme || (systemDark.matches ? "dark" : "light"));
 
   themeBtn?.addEventListener("click", () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
