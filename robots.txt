@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luisbadalo.dev/sitemap.xml
+Sitemap: https://luisbadal0.github.io/luisbadalo-portfolio/sitemap.xml

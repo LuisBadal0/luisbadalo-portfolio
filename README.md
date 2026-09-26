@@ -2,7 +2,7 @@
 
 Static personal site for Luís Badalo — Middleware Consultant & MuleSoft Developer.
 
-Live: **https://luisbadalo.dev** · Mirror: https://luisbadal0.github.io/luisbadalo-portfolio/
+Live: **https://luisbadal0.github.io/luisbadalo-portfolio/**
 
 ## Features
 
@@ -13,8 +13,8 @@ Live: **https://luisbadalo.dev** · Mirror: https://luisbadal0.github.io/luisbad
 - Sticky nav with active-section highlighting and accessible mobile menu
 - "whoami" terminal easter egg — type `whoami` anywhere or hit Send in the contact console
 - Embedded schema.org `Person` structured data
-- Open Graph + Twitter card metadata, `hreflang` alternates, `color-scheme` support
-- Custom 404 page, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `CNAME`, `humans.txt`, `security.txt`
+- Open Graph + Twitter card metadata and `color-scheme` support
+- Custom 404 page, `robots.txt`, `sitemap.xml`, `site.webmanifest`, `humans.txt`, `security.txt`
 - Preload for critical CSS and LCP image, `author` link
 - Optional zero-dependency Node server (`server.js`) with gzip (LRU), ETags + `If-Modified-Since`, conditional caching, path-traversal hardening, and security headers (CSP with hash, HSTS in production, COOP/CORP, graceful shutdown)
 
@@ -42,10 +42,9 @@ Health check: `GET /health` → `{"status":"ok"}` (`Cache-Control: no-store`)
 
 Deploys automatically to **GitHub Pages** on every push to `main` (source: `main` branch, root directory, legacy build type).
 
-- Primary domain: https://luisbadalo.dev (canonical, `og:url`, `sitemap.xml`)
-- GitHub Pages mirror: https://luisbadal0.github.io/luisbadalo-portfolio/
+The GitHub Pages project URL is https://luisbadal0.github.io/luisbadalo-portfolio/. The manifest and 404 page use the project path, and `.nojekyll` keeps the static files (including `.well-known/security.txt`) intact.
 
-If using a custom domain on GitHub Pages, add a `CNAME` file containing `luisbadalo.dev`.
+A project site cannot place files at the `github.io` host root. `robots.txt` and `.well-known/security.txt` are available under `/luisbadalo-portfolio/`, so host-root crawlers will not discover them automatically.
 
 ## Project structure
 
@@ -57,12 +56,12 @@ assets/js/i18n.js           — EN/PT-PT strings, persistence, CV link switching
 assets/img/                 — favicon, apple-touch-icon, og-card, portrait
 cv/                         — downloadable résumé PDFs (EN + PT)
 404.html                    — standalone 404 (no external deps)
-robots.txt                  — allowlist + sitemap reference
+robots.txt                  — project-path sitemap reference
 sitemap.xml                 — single canonical URL
 site.webmanifest            — PWA manifest
-CNAME                       — custom domain for GitHub Pages
+.nojekyll                   — publish static files without Jekyll processing
 humans.txt                  — team & colophon
-.well-known/security.txt    — contact for security reports (RFC 9116)
+.well-known/security.txt    — security contact at the project path
 server.js                   — optional static server (hardened)
 Dockerfile                  — node:22-alpine, healthcheck on /health
 .github/workflows/ci.yml    — syntax check on push/PR

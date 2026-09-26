@@ -1,7 +1,7 @@
 /* TEAM */
   Luís Badalo — Middleware Consultant & MuleSoft Developer
   Location: Portugal / Lisbon
-  Site: https://luisbadalo.dev
+  Site: https://luisbadal0.github.io/luisbadalo-portfolio/
   Contact: luismbbadalo@gmail.com
   LinkedIn: https://www.linkedin.com/in/luis-badalo/
   GitHub: https://github.com/LuisBadal0
