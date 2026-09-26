@@ -27,6 +27,11 @@ jobs:
             if(!m){ console.error('inline script not found'); process.exit(1); }
             const hash=crypto.createHash('sha256').update(m[1]).digest('base64');
             const server=fs.readFileSync('server.js','utf8');
-            if(!server.includes(hash)){ console.error('CSP hash mismatch. Expected hash:', hash); process.exit(1); }
+            const expected='sha256-'+hash;
+            const meta=html.match(/<meta http-equiv=\x22Content-Security-Policy\x22 content=\x22([^\x22]+)\x22>/);
+            const hashes=s=>[...s.matchAll(/'sha256-[^']+'/g)].map(m=>m[0].slice(1,-1));
+            if(!meta || hashes(server).length!==1 || hashes(server)[0]!==expected || hashes(meta[1]).length!==1 || hashes(meta[1])[0]!==expected){
+              console.error('CSP hash mismatch. Expected:', expected); process.exit(1);
+            }
             console.log('CSP hash ok:', hash);
           "

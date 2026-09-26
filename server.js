@@ -28,7 +28,7 @@ const MIME = {
 };
 
 const SECURITY_HEADERS = {
-    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'sha256-VdG3dKqVSyuB4RubHZeh0vx7LiIF71Ao5g7Lwo9RVjU=' 'sha256-MYZtYArdfY7je2JUplLvF9LoHyHCjJC+rvqvlZhyluo='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'sha256-VdG3dKqVSyuB4RubHZeh0vx7LiIF71Ao5g7Lwo9RVjU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
     'Referrer-Policy': 'strict-origin-when-cross-origin',

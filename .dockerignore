@@ -14,4 +14,3 @@ tmp
 *.log
 .env
 .env.*
-npm-debug.log*

@@ -72,6 +72,8 @@ Dockerfile                  — node:22-alpine, healthcheck on /health
 
 `Content-Security-Policy` (hash for inline bootstrap), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy`, `Cross-Origin-Opener-Policy: same-origin`, `Cross-Origin-Resource-Policy: same-site`, and `Strict-Transport-Security` in production.
 
+GitHub Pages serves the static files without running `server.js`. The homepage therefore also includes a CSP `<meta>` tag for script and resource restrictions. Header-only protections such as `frame-ancestors`, `X-Frame-Options`, and COOP/CORP require hosting that can set response headers.
+
 ## License
 
 All content and code © 2026 Luís Badalo. All rights reserved.
