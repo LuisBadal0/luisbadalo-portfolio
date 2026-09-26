@@ -1,0 +1,13 @@
+/* TEAM */
+  Luís Badalo — Middleware Consultant & MuleSoft Developer
+  Location: Portugal / Lisbon
+  Site: https://luisbadalo.dev
+  Contact: luismbbadalo@gmail.com
+  LinkedIn: https://www.linkedin.com/in/luis-badalo/
+  GitHub: https://github.com/LuisBadal0
+
+/* SITE */
+  Language: en / pt-PT
+  Stack: Hand-built HTML, CSS, vanilla JS — no framework
+  Server: Zero-dependency Node (server.js) with gzip, ETags, CSP
+  Thanks: Glintt Global, Banco CTT

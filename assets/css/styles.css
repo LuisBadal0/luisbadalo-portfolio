@@ -160,8 +160,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   height: var(--header);
   border-bottom: 1px solid transparent;
   background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .site-header { background: rgba(243, 238, 228, 0.82); }
+  html[data-theme="dark"] .site-header { background: rgba(22, 19, 15, 0.82); }
 }
 
 .site-header.is-stuck {
@@ -1119,4 +1125,17 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 @media (max-width: 480px) {
   .hero__name { font-size: clamp(3.4rem, 22vw, 5rem); }
+}
+
+@media print {
+  .site-header, .flow-rail, .console, .hero__actions, .nav__toggle { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; line-height: 1.5; }
+  body::before { display: none; }
+  a { color: #000; text-decoration: underline; }
+  .section, .hero { padding: 1rem 0; }
+  .case, .skill-group, .about__facts, .cred { break-inside: avoid; border-color: #ccc; }
+  .experience, .contact { background: #fff; color: #000; }
+  .experience .section__head--light h2,
+  .experience .section__head--light .section__intro,
+  .contact .section__head--light h2 { color: #000; }
 }

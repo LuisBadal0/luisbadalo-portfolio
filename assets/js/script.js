@@ -20,14 +20,17 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   const themeBtn = document.getElementById("theme-toggle");
-  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  const metaThemes = document.querySelectorAll('meta[name="theme-color"]');
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
   const applyTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
     themeBtn?.setAttribute("aria-pressed", String(theme === "dark"));
     themeBtn?.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-    metaTheme?.setAttribute("content", theme === "dark" ? "#16130f" : "#f3eee4");
+    const color = theme === "dark" ? "#16130f" : "#f3eee4";
+    metaThemes.forEach((meta) => meta.setAttribute("content", color));
   };
+
+  applyTheme(document.documentElement.dataset.theme || (systemDark.matches ? "dark" : "light"));
 
   themeBtn?.addEventListener("click", () => {
     const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
@@ -129,17 +132,21 @@
 
   const buildPayload = () => {
     const s = (key, fallback) => (window.I18N ? window.I18N.s(key) : null) || fallback;
-    return `{
-  "name": "Luís Badalo",
-  "role": "${s("whoami.role", "Middleware Consultant")}",
-  "employer": "Glintt Global",
-  "assignment": "Banco CTT",
-  "certified": "Salesforce MuleSoft Developer I",
-  "based": "${s("whoami.based", "Portugal")}",
-  "languages": ["${s("whoami.lang1", "Portuguese")}", "${s("whoami.lang2", "English")}"],
-  "status": 200,
-  "message": "${s("whoami.message", "Ready to integrate.")}"
-}`;
+    return JSON.stringify(
+      {
+        name: "Luís Badalo",
+        role: s("whoami.role", "Middleware Consultant"),
+        employer: "Glintt Global",
+        assignment: "Banco CTT",
+        certified: "Salesforce MuleSoft Developer I",
+        based: s("whoami.based", "Portugal"),
+        languages: [s("whoami.lang1", "Portuguese"), s("whoami.lang2", "English")],
+        status: 200,
+        message: s("whoami.message", "Ready to integrate.")
+      },
+      null,
+      2
+    );
   };
 
   let typed = "";
