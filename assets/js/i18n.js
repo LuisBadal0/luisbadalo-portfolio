@@ -77,7 +77,7 @@
       "skills.backend": "Backend delivery",
       "about.eyebrow": "04 — About",
       "about.title": "A connector by trade.",
-      "about.p1": "I’m a Portuguese middleware consultant. The job, stripped of jargon: take systems that were never introduced and give them a reliable way to speak — contracts, mappings, runtime, the unglamorous bits that keep a bank’s processes moving on a Tuesday.",
+      "about.p1": "I am a Portuguese middleware consultant. The job, stripped of jargon: take systems that were never introduced and give them a reliable way to speak — contracts, mappings, runtime, the unglamorous bits that keep a bank’s processes moving on a Tuesday.",
       "about.p2": "I trained in computer engineering at the Instituto Politécnico de Tomar, then spent two years at Softinsa building Azure-backed services for international IKEA programmes. The through-line was already there: backends, environments, pipelines, certificates. The current chapter is MuleSoft, in Lisbon with Glintt Global, inside Banco CTT.",
       "about.p3": "I care about the whole path — RAML to runtime, procedure to payload — because integrations fail in the seams, not in the slide deck.",
       "about.photoAlt": "Portrait of Luís Badalo",
