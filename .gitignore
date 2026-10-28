@@ -9,6 +9,7 @@ coverage/
 dist/
 tmp/
 .opencode/
+.claude/
 .vscode/
 .idea/
 *.log
