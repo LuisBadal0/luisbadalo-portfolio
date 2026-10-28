@@ -424,12 +424,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 .btn:hover { transform: translateY(-2px); }
 
+/* Tokens, so the primary button inverts with the theme instead of vanishing in dark mode. */
 .btn--solid {
-  background: #16120e;
-  color: #f3eee4;
+  background: var(--ink);
+  color: var(--bg);
 }
 
-.btn--solid:hover { background: var(--terracotta); color: #f3eee4; }
+.btn--solid:hover { background: var(--terracotta); color: var(--bg); }
 
 .btn--ghost {
   color: var(--ink);
@@ -663,6 +664,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   text-transform: uppercase;
   color: #c9c0b4;
 }
+
+.timeline__range { white-space: nowrap; }
 
 .timeline__card h3 {
   margin: 0 0 0.25rem;
