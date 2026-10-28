@@ -26,7 +26,7 @@ npm start        # plain start
 npm run check    # syntax-check server.js and client scripts
 ```
 
-Then open http://localhost:3000
+Then open http://localhost:3000 — or http://localhost:3000/luisbadalo-portfolio/ to mirror the GitHub Pages path (the 404 page links there).
 
 No build step — it is served as-is.
 
