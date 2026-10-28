@@ -38,11 +38,14 @@
     applyTheme(next);
   });
 
-  if (!localStorage.getItem("theme")) {
-    systemDark.addEventListener("change", (event) => {
-      applyTheme(event.matches ? "dark" : "light");
-    });
-  }
+  // Follow the system theme until the visitor picks one; storage may be blocked.
+  const storedTheme = () => {
+    try { return localStorage.getItem("theme"); } catch (e) { return null; }
+  };
+
+  systemDark.addEventListener("change", (event) => {
+    if (!storedTheme()) applyTheme(event.matches ? "dark" : "light");
+  });
 
   let scrollQueued = false;
   const onScroll = () => {
@@ -178,7 +181,7 @@
 
   run?.addEventListener("click", showWhoami);
 
-  window.addEventListener("i18n:change", () => {
+  document.addEventListener("i18n:change", () => {
     if (shown) {
       const payload = buildPayload();
       out.textContent = payload;

@@ -8,6 +8,8 @@ const zlib = require('zlib');
 const PORT = Number(process.env.PORT) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 const ROOT = __dirname;
+// GitHub Pages serves the site under this project path; mirror it locally so 404.html links resolve.
+const BASE_PATH = '/luisbadalo-portfolio';
 
 const MIME = {
     '.html': 'text/html; charset=utf-8',
@@ -28,7 +30,7 @@ const MIME = {
 };
 
 const SECURITY_HEADERS = {
-    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'sha256-VdG3dKqVSyuB4RubHZeh0vx7LiIF71Ao5g7Lwo9RVjU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'sha256-VdG3dKqVSyuB4RubHZeh0vx7LiIF71Ao5g7Lwo9RVjU='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'",
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'DENY',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
@@ -235,6 +237,13 @@ const server = http.createServer((req, res) => {
         res.end(body);
         return;
     }
+
+    if (pathname === BASE_PATH) {
+        res.writeHead(301, { Location: `${BASE_PATH}/${url.search}`, ...SECURITY_HEADERS });
+        res.end();
+        return;
+    }
+    if (pathname.startsWith(`${BASE_PATH}/`)) pathname = pathname.slice(BASE_PATH.length);
 
     if (pathname === '/') pathname = '/index.html';
     if (pathname === '/favicon.ico') pathname = '/assets/img/favicon.svg';

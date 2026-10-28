@@ -10,6 +10,8 @@
       "nav.skills": "Skills",
       "nav.about": "About",
       "nav.contact": "Contact",
+      "nav.menu": "Menu",
+      "header.email": "Email",
       "lang.toggleLabel": "Switch to Portuguese",
       "theme.dark": "Switch to dark mode",
       "theme.light": "Switch to light mode",
@@ -119,6 +121,8 @@
       "nav.skills": "Competências",
       "nav.about": "Sobre",
       "nav.contact": "Contacto",
+      "nav.menu": "Menu",
+      "header.email": "E-mail",
       "lang.toggleLabel": "Mudar para inglês",
       "theme.dark": "Mudar para o modo escuro",
       "theme.light": "Mudar para o modo claro",
@@ -238,15 +242,19 @@
     document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
     document.documentElement.dataset.lang = lang;
 
+    // A missing key falls back to English, then leaves the markup text alone.
+    const lookup = (key) => dict[key] ?? STRINGS.en[key];
+
     document.querySelectorAll("[data-i18n]").forEach((el) => {
-      el.textContent = dict[el.dataset.i18n] ?? "";
+      const value = lookup(el.dataset.i18n);
+      if (value !== undefined) el.textContent = value;
     });
 
     document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
       el.dataset.i18nAttr.split(",").forEach((pair) => {
         const sep = pair.indexOf(":");
         const attr = pair.slice(0, sep).trim();
-        const value = dict[pair.slice(sep + 1).trim()];
+        const value = lookup(pair.slice(sep + 1).trim());
         if (value !== undefined) el.setAttribute(attr, value);
       });
     });

@@ -4,51 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f3eee4">
+  <meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16130f" media="(prefers-color-scheme: dark)">
   <meta name="robots" content="noindex">
   <title>404 — Page not found · Luís Badalo</title>
   <link rel="icon" href="/luisbadalo-portfolio/assets/img/favicon.svg" type="image/svg+xml">
-  <style>
-    :root {
-      --paper: #f3eee4;
-      --ink: #16120e;
-      --ink-soft: #6b6259;
-      --accent: #b8431f;
-    }
-    * { margin: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "Sora", system-ui, sans-serif;
-      padding: 2rem;
-    }
-    main { text-align: center; max-width: 40rem; }
-    .code {
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
-      color: var(--accent);
-      font-size: 4rem;
-      font-weight: 500;
-      letter-spacing: .04em;
-    }
-    h1 { font-weight: 500; font-size: 1.7rem; margin: .8rem 0 1rem; }
-    p { color: var(--ink-soft); line-height: 1.6; }
-    a {
-      display: inline-block;
-      margin-top: 1.6rem;
-      padding: .75rem 1.4rem;
-      border: 1.5px solid var(--ink);
-      border-radius: 10px;
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 500;
-      transition: background .18s ease, color .18s ease;
-    }
-    a:hover { background: var(--ink); color: var(--paper); }
-  </style>
+  <link rel="stylesheet" href="/luisbadalo-portfolio/assets/css/404.css">
 </head>
 <body>
   <main>
